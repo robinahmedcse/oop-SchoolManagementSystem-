@@ -1,4 +1,13 @@
 
+
+<?php 
+ 
+$run_query= $object_teacher->view_all_teacher_info($_POST);
+ 
+?>
+
+       
+
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
@@ -49,6 +58,25 @@
                     </div> 
 
 
+
+                  
+                                <?php
+                                  if (isset($_SESSION['message'])) {
+                               ?>
+                                      <div class="alert alert-success" role="alert">    
+                                         <h1>  <?php echo $_SESSION['message']; ?>  </h1>
+                                     </div>
+      
+                                    <?php   }      unset($_SESSION['message']);   ?>
+                                    
+                     
+
+
+
+
+
+
+
                     <div class="class">
                       <div align="right">
                             <a href="add-teacher.php" class="btn btn-primary ">Add teacher</a>
@@ -69,6 +97,24 @@
                                     <th>Action</th>
                                 </tr>
                             </thead> 
+                            <?php while ($r = mysqli_fetch_object($run_query) ) {  ?> 
+                                
+                                <tr>
+                                    <td><?php  echo $r->tc_id; ?></td>
+                                    <td><?php  echo $r->tc_name; ?></td>
+                                    <th><?php  echo $r->tc_designation; ?> </th>
+                                    <td><?php  echo $r->tc_email; ?></td>
+                                    <td><?php  echo $r->tc_joining_date; ?></td>
+                                    <td>
+                                       <a href="#" class="btn btn-xs btn-primary edit" id="<?php  echo $r->tc_id; ?>"> Edit</a>
+                                      <a href="#" class="btn btn-xs btn btn-danger delete" id="<?php  echo $r->tc_id; ?>">Delete</a>
+                                    
+                                    </td>
+                                </tr>
+                                
+                            <?php   }
+                                ?> 
+                            
                         </table>
                         </div>
                     </div>
@@ -85,6 +131,22 @@
 <script>
 $(document).ready(function() {
     $('#example').DataTable();
+} );
+</script> 
+
+
+<script>
+$(document).on('click', '.edit',function() {
+     
+                  alert("Sorry!!! Edit function not Active right now");
+} );
+</script> 
+
+
+<script>
+$(document).on('click', '.delete',function() {
+     
+                  alert("Sorry!!! Delete function not Active right now");
 } );
 </script> 
 

@@ -1,5 +1,40 @@
+<?php 
 
-    
+ 
+
+if(isset($_POST['Submit'])){
+
+   // var_dump($_POST);
+   // die();
+ 
+    $object_teacher->save_teacher_info($_POST);
+}
+?>
+
+            
+ 
+ 
+    <script>
+  // alert(" filled out");
+
+function validateForm(formData) {
+   
+  if (formData.t_name.value == "") {
+    alert("Name must be filled out");
+    formData.t_name.focus();
+    return false;
+  }
+
+
+
+  //end of function validateForm
+}
+</script>
+
+
+
+
+
    <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
@@ -19,26 +54,6 @@
         </div>
 
         <div class="clearfix"></div>
-
-
-<div class="alert alert-success" role="alert">
-  <h4 class="alert-heading"></h4>
-  <p>
-<?php 
-
-echo"<pre>";
-var_dump($_POST);
-
-
-
-?>
-    </p>
-  <p class="mb-0"></p>
-</div>
-
-
-
-
 
         <div class="row">
             <div class="clearfix"></div>
@@ -78,18 +93,20 @@ var_dump($_POST);
                     </div>
  
                 </div>
+                    
+
 
                  <div class="x_content">
                  
                  
-                 <form action="#" method="POST" class="form-horizontal form-label-left">
+                 <form action="#" onsubmit="return validateForm(this)" method="POST" class="form-horizontal form-label-left" >
                      
                         <!--  name -->
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Teacher Name <span class="required" >*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="" name="" class="form-control col-md-7 col-xs-12" >
+                                <input type="text" id="t_name" name="t_name" class="form-control col-md-7 col-xs-12" >
                                  
                             </div>
                         </div>
@@ -99,7 +116,7 @@ var_dump($_POST);
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Designation<span class="required" >*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="" name="" class="form-control col-md-7 col-xs-12" >
+                                <input type="text" id="t_designation" name="t_designation" class="form-control col-md-7 col-xs-12" >
                                  
                             </div>
                         </div>
@@ -164,10 +181,10 @@ var_dump($_POST);
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <div id="gender" class="btn-group" data-toggle="buttons">
                             <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
+                              <input type="radio" name="gender" id="gender" value="Male"> &nbsp; Male &nbsp;
                             </label>
                             <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="female"> Female
+                              <input type="radio" name="gender" id="gender" value="Female"> Female
                             </label>
                           </div>
                         </div>
@@ -183,7 +200,7 @@ var_dump($_POST);
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Religion<span class="required" >*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <select name="publicationStatus" class="form-control" required>
+                                <select name="religion" id="religion" class="form-control" required>
                                 <option value="null" selected disabled  >Select Religion</option>
                                     <option value="ISLAM">ISLAM</option>
                                     <option value="BUDDHISM">BUDDHISM</option>
@@ -203,7 +220,7 @@ var_dump($_POST);
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Email<span class="required" >*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="email" id="" name="" class="form-control col-md-7 col-xs-12" >
+                                <input type="email" id="email" name="email" class="form-control col-md-7 col-xs-12" >
                                  
                             </div>
                         </div>
@@ -214,7 +231,7 @@ var_dump($_POST);
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Phone<span class="required" >*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="" name="" class="form-control col-md-7 col-xs-12" >
+                                <input type="text" id="phone" name="phone" class="form-control col-md-7 col-xs-12" >
                                  
                             </div>
                         </div>
@@ -226,7 +243,7 @@ var_dump($_POST);
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Address<span class="required" >*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <textarea name="" id="" cols="10" rows="10" class="form-control col-md-7 col-xs-12" ></textarea>
+                              <textarea name="address" id="address" cols="5" rows="5" class="form-control col-md-7 col-xs-12" ></textarea>
                                  
                             </div>
                             </div>
@@ -274,8 +291,8 @@ var_dump($_POST);
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Username<span class="required" >*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="" name="" class="form-control col-md-7 col-xs-12" >
-                                 
+                                <input type="text" id="username" name="username" class="form-control col-md-7 col-xs-12" >
+                                <span id="availability"></span>
                             </div>
                             </div>
 
@@ -286,7 +303,7 @@ var_dump($_POST);
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Password<span class="required" >*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="password" id="" name="" class="form-control col-md-7 col-xs-12" >
+                                <input type="password" id="password" name="password" class="form-control col-md-7 col-xs-12" >
                                  
                             </div>
                             </div>
@@ -306,7 +323,7 @@ var_dump($_POST);
 
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"> 
-                                <input type="submit" name='btn' value="প্রেরন" class="btn btn-success">
+                                <input type="submit" name='Submit' value="Submit" id="add-tc-info" class="btn btn-success">
                             </div>
                         </div>
 
@@ -327,4 +344,36 @@ var_dump($_POST);
 
 
 
- 
+
+ <script>
+ $(document).ready(function(){  
+   $('#username').blur(function(){
+
+     var username = $(this).val();
+
+     $.ajax({
+      url:'classes/tc_check.php',
+      method:"POST",
+      data:{user_name:username},
+      success:function(data)
+      {
+        console.log(data);
+          
+       if(data != '0')
+       {
+        $('#availability').html('<span class="text-danger">Username not available</span>');
+        $('#add-tc-info').attr("disabled", true);
+       }
+       else
+       {
+        $('#availability').html('<span class="text-success">Username Available</span>');
+        $('#add-tc-info').attr("disabled", false);
+       }
+
+
+        }
+     })
+
+  });
+ }); 
+ </script>

@@ -1,10 +1,20 @@
 <?php 
-// session_start();
+ob_start();
+ session_start();
+
+///teacher class\\\\\\\\
+
+ require './classes/teacher.php';
+ $object_teacher = new teacher();
+
+
+
 
 // $adminId= isset($_SESSION['adminId']);
 // if($adminId){
 //     header('location:adminmaster.php');
 // }
+
 
  
 
@@ -63,6 +73,7 @@
 
             <!--    ajax jquery-->           
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script> 
+  
             
    
     <!--    jquery.dataTables.min.js -->
@@ -73,14 +84,7 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
  
-        <script>
-            
-             function one_delete(){
-                   var check = confirm("আপনি কি এটা স্থায়ীভাবে মুছে ফেলতে চান?");
-                  if(check){return true;}else{return false;}
-              }  
-           
-        </script>
+       
     
   </head>
 
