@@ -1,6 +1,6 @@
 <?php
 
-class teacher {
+class stu_parent {
  
     private $link;
     public function __construct() {
@@ -16,38 +16,45 @@ class teacher {
     }
     
     
-    public function save_teacher_info($data){
-
+    public function save_parent_info($data){
+       // session_start();
        
                 $action = 'encrypt';
                 $password_main=$data['password'];
 
-            $password_e= $this->convert_string($action, $password_main);    
+              
+                  // print_r($_FILES);
+                 // echo'<br>';
+                // $action = 'decrypt';
+               // $password_d= $this->convert_string($action, $password);
+              // echo   $password_d;
+             // die();
 
-            // echo'<br>';
-            // $action = 'decrypt';
+            $password_e= $this->convert_string($action, $password_main);   
+            
 
-            // $password_d= $this->convert_string($action, $password);
-            // echo   $password_d;
-            // die();
+              $query="INSERT INTO parents(guardian_name,father_name,mother_name,father_profession,mother_profession ,
+                      parents_address,parents_phone,parents_email,parents_username,parents_password)"
+                  . "VALUES('$data[g_name]','$data[f_name]','$data[m_name]','$data[f_profession]'
+                  ,'$data[m_profession]','$data[address]','$data[email]','$data[phone]','$data[username]',
+                   '$password_e')";
+                           
 
-        
-        $query="INSERT INTO teacher(tc_name,tc_designation,tc_dob,tc_gender,tc_religion,tc_email,
-        tc_phone,tc_address,tc_joining_date,tc_username,tc_password)"
-                . "VALUES('$data[t_name]','$data[t_designation]','$data[dateOfBirth]','$data[gender]'
-                ,'$data[religion]','$data[email]','$data[phone]','$data[address]','$data[join]','$data[username]'
-                ,'$password_e')";
-       
-                $run_query= mysqli_query($this->link, $query);
-        if(!$run_query){
-             echo ( mysqli_error($this->link));
-        }
-        else{
-            $message="Teacher info save successfully";
-            $_SESSION['message']=$message;
-            header("location:view-teacher.php");
-        }        
+
+
+                    $run_query= mysqli_query($this->link, $query);
+                           if(!$run_query){
+                                 echo ( mysqli_error($this->link));
+                           }
+                             else{
+                            $message="Teacher info save successfully";
+                                $_SESSION['message']=$message;
+                                header("location:view-teacher.php");
+                            } 
+
+ 
     }
+
 
 
 
@@ -82,25 +89,45 @@ class teacher {
 
 
 
+ 
+    
 
 
 
     
    
-       public function view_all_teacher_info(){
-          $query="SELECT * FROM teacher";
+       public function view_all_parents_info(){
+          $query="SELECT * FROM parents";
         $run_query= mysqli_query($this->link, $query);
         if(!$run_query){
              echo ( mysqli_error($this->link));
         }
         else{
-//            $message="Student info save successfully";
-//            echo $message;
-            //$result=  mysqli_fetch_assoc($run_query);
-//            print_r($result);
-            return $run_query;
+              return $run_query;
             
         }    
+        
+    }
+
+
+ 
+
+
+    public function find_parent_by_id($id){
+
+        $query="SELECT * FROM parents WHERE parents_id='$id'";
+        $run_query= mysqli_query($this->link, $query);
+        if(!$run_query){
+             echo ( mysqli_error($this->link));
+        }
+        else{
+ 
+            return $run_query;
+            
+        } 
+
+
+
     }
 
 
@@ -149,27 +176,29 @@ class teacher {
     
  */
 
- /*
-      public function delete_student_info($catch) {
+ 
+      public function delete_parent_info($catch) {
          //  echo $catch;
-        $query="DELETE FROM add_stu WHERE stu_id='$catch'";
+        $query="DELETE FROM parents WHERE parents_id='$catch'";
         $run_query= mysqli_query($this->link, $query);
+        return $run_query;
+        
         if(!$run_query){
              echo ( mysqli_error($this->link));
         }
         else{
-            header('location:view.php');  
+         //   header('location:view.php');  
             
         } 
-          
+           
           
     }
 
 
-*/
-    public function check_teacher_username($username){
+ 
+    public function check_parent_username($username){
 
-         $query = "SELECT * FROM teacher WHERE tc_username = '".$username."'";
+         $query = "SELECT * FROM parents WHERE parents_username = '".$username."'";
          $run_query= mysqli_query($this->link, $query);
 
          return $run_query;

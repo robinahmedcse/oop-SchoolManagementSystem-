@@ -10,28 +10,39 @@
             </li>
 
 
+            <li><a><i class="fa fa-cubes"></i>Student <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="#">Student</a></li>
+                </ul>
+            </li>
+
+
+            <li><a><i class="fa fa-male"></i>Parents <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="view-parent.php">Parent</a></li>
+                </ul>
+            </li>
+
             
             <li><a><i class="fa fa-edit"></i>Teacher<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="view-teacher.php">View Teacher</a></li>
+                    <li><a href="view-teacher.php">Teacher</a></li>
                 </ul>
             </li>
             
-              <li><a><i class="fa fa-bug"></i> User Management <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                    <li><a href="add-user.php"> Add User</a></li>
-                    <li><a href="view-user.php">View User</a></li>
-                 
-                </ul>
-            </li>
             
-            <li><a><i class="fa fa-desktop"></i>Salary Management <span class="fa fa-chevron-down"></span></a>
+              <li><a><i class="fa fa-bug"></i>Academic<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="add-salary.php">Add Salary</a></li>
-                    <li><a href="view-salary.php">View Salary</a></li>
+             
+                    <li><a href="view-class.php">Class</a></li>
+                    <li><a href="view-section.php">Section</a></li>
+                    <li><a href="view-syllabys1.php">Syllabys</a></li>
 
+                    <li><a href="view-student-group.php">Student Group</a></li>
                 </ul>
             </li>
+            
+          
 
 
 

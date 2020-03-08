@@ -1,15 +1,21 @@
 <?php 
 
  
-
+                                        
 if(isset($_POST['Submit'])){
 
-   // var_dump($_POST);
-   // die();
- 
-    $object_teacher->save_teacher_info($_POST);
-}
+    // var_dump($_POST);
+    // die();
+  
+     $object_teacher->save_teacher_info($_POST);
+ }
+
+
+
 ?>
+
+
+ 
 
             
  
@@ -85,6 +91,33 @@ function validateForm(formData) {
                     </div> 
 
 
+
+
+ 
+
+                    <?php
+                      if (isset($_SESSION['message'])) {
+                          ?>
+                          <div class="text text-center text-success"><h2><?php echo $_SESSION['message']; ?></h2></div>
+                          <?php
+                      }
+                      unset($_SESSION['message']);
+                      
+                      
+                      if (isset($message)) {
+                          ?>
+                          <div class="text text-center text-success"><h2><?php echo $message; ?></h2></div>
+                          <?php
+                      }
+                      unset($message);
+                      ?>
+
+              
+
+
+
+
+
                     <div class="class">
                       <div align="right">
                             <a href="view-teacher.php" class="btn btn-warning ">Return View teacher</a>
@@ -99,7 +132,8 @@ function validateForm(formData) {
                  <div class="x_content">
                  
                  
-                 <form action="#" onsubmit="return validateForm(this)" method="POST" class="form-horizontal form-label-left" >
+                 <form action="#" onsubmit="return validateForm(this)" method="POST" class="form-horizontal form-label-left" 
+                 enctype="multipart/form-data">
                      
                         <!--  name -->
                         <div class="form-group">
@@ -284,6 +318,35 @@ function validateForm(formData) {
                             
 
 
+
+                            <!--  photo    -->
+
+                            <div class="form-group">                      
+                        
+                              
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for=""> Photo</label>
+                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="input-group image-preview" data-original-title="" title="">
+                                            <input type="text" class="form-control image-preview-filename" disabled="disabled">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-sx-info image-preview-clear" style="display:none;">
+                                                    <span class="fa fa-remove"></span>   Clear     
+                                                  </button>
+                                                <div class=" image-preview-input">
+                                                    <input  type="file"  accept="image/png, image/jpeg, image/jpeg" 
+                                                    class="btn btn-success" name="photo">
+                                                </div>
+                                            </span>
+                                            <br>
+                                          
+                                        </div>
+                                        <div>
+                                        <span style="color:red;">Note:Image size not more then 500 KB</span>
+                                        </div>
+                                </div>
+                        </div>
+
+
                             
                                   <!--  user name  -->
 
@@ -342,6 +405,82 @@ function validateForm(formData) {
     </div>
 </div>
 
+
+
+
+
+
+
+
+<script>
+
+
+$(document).on('click', '#close-preview', function(){
+    $('.image-preview').popover('hide');
+    // Hover befor close the preview
+    $('.image-preview').hover(
+        function () {
+           $('.image-preview').popover('show');
+           $('.content').css('padding-bottom', '100px');
+        },
+         function () {
+           $('.image-preview').popover('hide');
+           $('.content').css('padding-bottom', '20px');
+        }
+    );
+});
+
+
+
+        $(function() {
+            // Create the close button
+            var closebtn = $('<button/>', {
+                type:"button",
+                text: 'x',
+                id: 'close-preview',
+                style: 'font-size: initial;',
+            });
+            closebtn.attr("class","close pull-right");
+            // Set the popover default content
+            $('.image-preview').popover({
+                trigger:'manual',
+                html:true,
+                title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
+                content: "There's no image",
+                placement:'bottom'
+            });
+            // Clear event
+            $('.image-preview-clear').click(function(){
+                $('.image-preview').attr("data-content","").popover('hide');
+                $('.image-preview-filename').val("");
+                $('.image-preview-clear').hide();
+                $('.image-preview-input input:file').val("");
+                $(".image-preview-input-title").text("File Browse");
+            });
+            // Create the preview image
+            $(".image-preview-input input:file").change(function (){
+                var img = $('<img/>', {
+                    id: 'dynamic',
+                    width:250,
+                    height:200,
+                    overflow:'hidden'
+                });
+                var file = this.files[0];
+                var reader = new FileReader();
+                // Set preview image into the popover data-content
+                reader.onload = function (e) {
+                    $(".image-preview-input-title").text("File Browse");
+                    $(".image-preview-clear").show();
+                    $(".image-preview-filename").val(file.name);
+                    img.attr('src', e.target.result);
+                    $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+                    $('.content').css('padding-bottom', '100px');
+                }
+                reader.readAsDataURL(file);
+            });
+        });
+
+</script>
 
 
 

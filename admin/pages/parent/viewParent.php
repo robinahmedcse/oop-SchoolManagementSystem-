@@ -1,8 +1,7 @@
 
-
 <?php 
  
-$run_query= $object_teacher->view_all_teacher_info($_POST);
+     $run_query= $stu_parent->view_all_parents_info($_POST);
  
 ?>
 
@@ -12,7 +11,7 @@ $run_query= $object_teacher->view_all_teacher_info($_POST);
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>All  <small>Information About Teacher</small></h3>
+                <h3>All Parent <small>Information</small></h3>
             </div>
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -34,7 +33,7 @@ $run_query= $object_teacher->view_all_teacher_info($_POST);
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                       <h2>Teachers Information<small></small></h2> 
+                       <h2>Parent Information<small></small></h2> 
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -57,8 +56,6 @@ $run_query= $object_teacher->view_all_teacher_info($_POST);
                         <br><br>
                     </div> 
 
-
-
                   
                                 <?php
                                   if (isset($_SESSION['message'])) {
@@ -69,17 +66,12 @@ $run_query= $object_teacher->view_all_teacher_info($_POST);
       
                                     <?php   }      unset($_SESSION['message']);   ?>
                                     
-                     
-
-
-
-
 
 
 
                     <div class="class">
                       <div align="right">
-                            <a href="add-teacher.php" class="btn btn-primary ">Add teacher</a>
+                            <a href="add-parent.php" class="btn btn-primary ">Add parent</a>
 
                          </div>
                     </div>
@@ -89,25 +81,25 @@ $run_query= $object_teacher->view_all_teacher_info($_POST);
                         <table  id="example"  class="table  table-bordered">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Name </th>
-                                    <th>Designation </th>
-                                    <th>Email </th>
-                                    <th>Joining Date </th>
-                                    <th>Action</th>
+                                    <th width="10%">ID</th>
+                                    <th width="20%">Name </th>
+                                    <th width="20%">Email </th> 
+                                    <th width="20%">Phone </th> 
+                                    <th width="30%">Action</th>
                                 </tr>
                             </thead> 
                             <?php while ($r = mysqli_fetch_object($run_query) ) {  ?> 
                                 
                                 <tr>
-                                    <td><?php  echo $r->tc_id; ?></td>
-                                    <td><?php  echo $r->tc_name; ?></td>
-                                    <th><?php  echo $r->tc_designation; ?> </th>
-                                    <td><?php  echo $r->tc_email; ?></td>
-                                    <td><?php  echo $r->tc_joining_date; ?></td>
+                                    <td><?php  echo $r->parents_id ; ?></td>
+                                    <td><?php  echo $r->guardian_name; ?></td>
+                                    
+                                    <td><?php  echo $r->parents_email; ?></td>
+                                    <td><?php  echo $r->parents_phone; ?></td>
                                     <td>
-                                       <a href="#" class="btn btn-xs btn-primary edit" id="<?php  echo $r->tc_id; ?>"> Edit</a>
-                                      <a href="#" class="btn btn-xs btn btn-danger delete" id="<?php  echo $r->tc_id; ?>">Delete</a>
+                                    <a href="#" class="btn btn-xs btn-info view" id="<?php  echo $r->parents_id ; ?>"> view</a>
+                                       <a href="#" class="btn btn-xs btn-primary edit" id="<?php  echo $r->parents_id ; ?>"> Edit</a>
+                                      <a href="#" class="btn btn-xs btn btn-danger delete" id="<?php  echo $r->parents_id ; ?>">Delete</a>
                                     
                                     </td>
                                 </tr>
@@ -135,6 +127,33 @@ $(document).ready(function() {
 </script> 
 
 
+
+
+
+<script>
+$(document).on('click', '.view', function(){
+  var id = $(this).attr('id');
+   //alert(id);
+  var options = {
+   ajaxPrefix: '',
+   ajaxData: {id:id},
+   ajaxComplete:function(){
+    this.buttons([{
+     type: Dialogify.BUTTON_PRIMARY
+    }]);
+   }
+  };
+  new Dialogify('classes/parent/stu_parent_check.php', options)
+   .title('View Parents Details')
+   .showModal();
+ });
+</script> 
+
+
+
+
+
+
 <script>
 $(document).on('click', '.edit',function() {
      
@@ -144,9 +163,28 @@ $(document).on('click', '.edit',function() {
 
 
 <script>
-$(document).on('click', '.delete',function() {
-     
-                  alert("Sorry!!! Delete function not Active right now");
-} );
+   $(document).on('click', '.delete', function(){
+    var id = $(this).attr('id');
+ 
+        Dialogify.confirm("<h3 class='text-danger'><b>Are you sure you want to remove this data?</b></h3>", {
+                ok:function(){
+                        $.ajax({
+                        url:"classes/parent/stu_parent_check.php",
+                        method:"POST",
+                        data:{parent_id:id},
+                        success:function(data)   {
+                            Dialogify.alert('<h3 class="text-success text-center"><b>Data has been deleted</b></h3>');
+                                setTimeout(function() {
+                                        document.location.reload()
+                                }, 1000)
+                            }
+                         })
+                     },
+             cancel:function(){
+             this.close();
+        }
+        });
+        
+ });
 </script> 
 

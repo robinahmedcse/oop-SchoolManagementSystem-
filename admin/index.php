@@ -4,9 +4,26 @@ ob_start();
 
 ///teacher class\\\\\\\\
 
- require './classes/teacher.php';
+ require './classes/teacher/teacher.php';
  $object_teacher = new teacher();
 
+ ///class class\\\\\\\\
+ require './classes/stu_class/class_file.php';
+$obj_class = New class_file();
+
+ ///Section class\\\\\\\\
+require './classes/section/section.php';
+$obj_section = New section();
+
+ ///Group class\\\\\\\\
+require './classes/group/group.php';
+$obj_stu_group = New group();
+
+
+
+ ///Parent class\\\\\\\\
+ require './classes/parent/stu_parent.php';
+ $stu_parent = New stu_parent();
 
 
 
@@ -46,8 +63,7 @@ ob_start();
 
     <title> Admin</title>
 
-    <!-- Bootstrap -->
-    <!-- Bootstrap -->
+    <!-- Bootstrap  v3.3.7 -->
     <link href="asset/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="asset/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -83,6 +99,8 @@ ob_start();
 
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
+    <script src="https://www.jqueryscript.net/demo/Dialog-Modal-Dialogify/dist/dialogify.min.js"></script>
  
        
     
@@ -126,21 +144,95 @@ ob_start();
                  /************\\ Teacher start //********************/ 
                     
                     if ($pages == "view-all-teacher") {
-                        include './pages/viewTeacher.php ';
+                        include './pages/teacher/viewTeacher.php ';
                     }
-                    
                     elseif ($pages == "add-teacher") {
-                      include './pages/addTeacher.php ';
+                      include './pages/teacher/addTeacher.php ';
                     }
                    
-                   
-                  /************\\ Emp end //********************/ 
+                  /************\\ Teacher end //********************/ 
+
+
+
+
+
+
+
+                  /************\\ class start //********************/ 
+                  elseif ($pages == "view-all-class") {
+                    include './pages/class/viewClass.php ';
+                  }
+                  elseif ($pages == "add-class") {
+                    include './pages/class/addClass.php ';
+                  }
+                  /************\\ class end //********************/ 
+
+
+
+
+
+
+
+                  
+                  /************\\ Section start //********************/ 
+                  elseif ($pages == "view-all-section") {
+                    include './pages/section/viewSection.php ';
+                  }
+                  elseif ($pages == "add-section") {
+                    include './pages/section/addSection.php ';
+                  }
+                  /************\\ Section end //********************/ 
+
+
+                  
+                  
+                  /************\\ Group start //********************/ 
+                  elseif ($pages == "view-all-group") {
+                    include './pages/group/viewStuGroup.php ';
+                  }
+                  elseif ($pages == "add-group") {
+                    include './pages/group/addStuGroup.php ';
+                  }
+                  /************\\ Section end //********************/ 
+
+
+
+                    
+                  /************\\ parent start //********************/ 
+                  elseif ($pages == "view-all-parent") {
+                    include './pages/parent/viewParent.php ';
+                  }
+                  elseif ($pages == "add-parent") {
+                    include './pages/parent/addParent.php ';
+                  }
+                  /************\\ Section end //********************/ 
+
+
+
+               
+
+
+
+
+
+
+
 
                     } 
                       else {
                          include './pages/p-dashboard.php';
                      }
+
+
+
+
+
                 ?>
+
+
+
+
+
                 <!-- /page content -->
         <!-- /page content -->
 
