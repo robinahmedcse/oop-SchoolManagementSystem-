@@ -491,7 +491,7 @@ $(document).on('click', '#close-preview', function(){
      var username = $(this).val();
 
      $.ajax({
-      url:'classes/tc_check.php',
+      url:'classes/teacher/tc_check.php',
       method:"POST",
       data:{user_name:username},
       success:function(data)

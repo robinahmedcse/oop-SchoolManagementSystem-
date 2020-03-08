@@ -154,10 +154,6 @@ $obj_stu_group = New group();
 
 
 
-
-
-
-
                   /************\\ class start //********************/ 
                   elseif ($pages == "view-all-class") {
                     include './pages/class/viewClass.php ';
@@ -166,11 +162,6 @@ $obj_stu_group = New group();
                     include './pages/class/addClass.php ';
                   }
                   /************\\ class end //********************/ 
-
-
-
-
-
 
 
                   
@@ -183,8 +174,7 @@ $obj_stu_group = New group();
                   }
                   /************\\ Section end //********************/ 
 
-
-                  
+    
                   
                   /************\\ Group start //********************/ 
                   elseif ($pages == "view-all-group") {
@@ -194,7 +184,6 @@ $obj_stu_group = New group();
                     include './pages/group/addStuGroup.php ';
                   }
                   /************\\ Section end //********************/ 
-
 
 
                     
@@ -210,12 +199,6 @@ $obj_stu_group = New group();
 
 
                
-
-
-
-
-
-
 
 
                     } 
