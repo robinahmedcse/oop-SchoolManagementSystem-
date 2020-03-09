@@ -21,15 +21,6 @@ class section {
 
 
 
-
-
-
-
-
-
-
- 
-
 public function add_class_info($data){
     //$query ="INSERT into class() VALUES();";
     $query ="INSERT into class(class_name,tc_id,class_note)
@@ -140,7 +131,7 @@ public function view_all_teacher_info_for_class(){
     }   
 }
 
- 
+
 
 // end of class_file
 }

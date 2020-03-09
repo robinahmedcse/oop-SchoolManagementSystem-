@@ -9,11 +9,11 @@ if(isset($_POST["user_name"]))
 
  
     require 'stu_parent.php';
-    $object_teacher = new stu_parent();
+    $object_parent = new stu_parent();
     
     $username = $_POST["user_name"];
   //  echo  $username ;
-    $run_query = $object_teacher->check_teacher_username($username);
+    $run_query = $object_parent->check_parent_username($username);
 
   //  $result=  mysqli_fetch_assoc($run_query);
    // print_r($result);

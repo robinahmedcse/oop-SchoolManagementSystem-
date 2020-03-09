@@ -2,29 +2,9 @@
 ob_start();
  session_start();
 
-///teacher class\\\\\\\\
-
- require './classes/teacher/teacher.php';
- $object_teacher = new teacher();
-
- ///class class\\\\\\\\
- require './classes/stu_class/class_file.php';
-$obj_class = New class_file();
-
- ///Section class\\\\\\\\
-require './classes/section/section.php';
-$obj_section = New section();
-
- ///Group class\\\\\\\\
-require './classes/group/group.php';
-$obj_stu_group = New group();
 
 
-
- ///Parent class\\\\\\\\
- require './classes/parent/stu_parent.php';
- $stu_parent = New stu_parent();
-
+ include 'includes/class_file_list.php';
 
 
 // $adminId= isset($_SESSION['adminId']);
@@ -141,15 +121,13 @@ $obj_stu_group = New group();
         <?php
                 if (isset($pages)) {
                     
-                 /************\\ Teacher start //********************/ 
-                    
+                 /************\\ Teacher start //********************/      
                     if ($pages == "view-all-teacher") {
                         include './pages/teacher/viewTeacher.php ';
                     }
                     elseif ($pages == "add-teacher") {
                       include './pages/teacher/addTeacher.php ';
-                    }
-                   
+                    }   
                   /************\\ Teacher end //********************/ 
 
 
@@ -197,6 +175,14 @@ $obj_stu_group = New group();
                   /************\\ Section end //********************/ 
 
 
+                    /************\\ Subject start //********************/ 
+                    elseif ($pages == "view-all-subject") {
+                      include './pages/subject/viewSubject.php ';
+                    }
+                    elseif ($pages == "add-subject") {
+                      include './pages/subject/addSubject.php ';
+                    }
+                    /************\\ Subject end //********************/ 
 
                
 
