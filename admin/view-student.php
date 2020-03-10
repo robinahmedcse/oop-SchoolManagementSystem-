@@ -1,6 +1,6 @@
 <?php
 
-$pages = "view-all-teacher";
+$pages = "view-all-student";
 include './index.php';
 
 

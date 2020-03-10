@@ -124,7 +124,7 @@ function classValidateForm(formData) {
                          </div>
                     </div>
  
-                </div>
+           
                     
 
 
@@ -196,6 +196,7 @@ function classValidateForm(formData) {
 
         </div>
     </div>
+</div>
 </div>
 
 

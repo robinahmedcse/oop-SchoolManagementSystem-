@@ -79,7 +79,7 @@
 
                     <div class="class">
                       <div align="right">
-                            <a href="add-teacher.php" class="btn btn-primary ">Add teacher</a>
+                            <a href="add-student.php" class="btn btn-primary ">Add Student</a>
 
                          </div>
                     </div>

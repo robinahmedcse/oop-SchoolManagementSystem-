@@ -121,7 +121,7 @@ function groupValidateForm(formData) {
                          </div>
                     </div>
  
-                </div>
+              
                     
 
 
@@ -167,6 +167,8 @@ function groupValidateForm(formData) {
         </div>
     </div>
 </div>
+
+  </div>
 
 
 

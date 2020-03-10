@@ -9,7 +9,7 @@ if(isset($_POST['Submit'])){
     // var_dump($_POST);
     // die();
   
-     $obj_section->add_class_info($_POST);
+     $stu_subject->add_stu_subject_info($_POST);
  }
 
 

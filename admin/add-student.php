@@ -1,6 +1,6 @@
 <?php
 
-$pages = "add-teacher";
+$pages = "add-student";
 include './index.php';
 
 ?>

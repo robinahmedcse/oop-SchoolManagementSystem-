@@ -2,15 +2,14 @@
 
 <?php 
  
-      $run_query = $obj_section-> view_all_section_info();
+      $run_query = $stu_subject-> view_all_subject_info();
  
 
     //   while ($r = mysqli_fetch_object($run_query) ) {
-    //    echo $r->section_id;
+    //    echo $r->subject_id;
 
-    //   }
+  //    }
  
-
  
 ?>
 
@@ -98,27 +97,26 @@
                             <thead>
                                 <tr>
                                     <th width="10%">ID</th>
-                                    <th width="15%">Section Name </th>
-                                    <th width="10%">Capacity </th>
-                                    <th width="15%">class Name </th> 
-                                    <th width="30%">Note </th>
+                                    <th width="15%">class Name </th>
+                                    <th width="10%">subject Name </th>
+                                    <th width="15%">Subject Code</th> 
+                                    <th width="30%">subject Type </th>
                                     <th width="20%">Action</th>
                                 </tr>
                             </thead> 
                             <?php while ($r = mysqli_fetch_object($run_query) ) {  ?> 
                                 
                                 <tr>
-                                    <td><?php  echo $r->section_id; ?></td>  
-                                    <td><?php  echo $r->section_name; ?></td>
-                                    <th><?php  echo $r->section_capacity;?> Person</th>
-                                    <td><?php  echo $r->class_name; ?></td>
-                                  
-                                    <td><?php  echo $r->section_note; ?></td>
+                                    <td><?php  echo $r->subject_id; ?></td> 
+                                    <td><?php  echo $r->class_name; ?></td> 
+                                    <td><?php  echo $r->subject_name; ?></td> 
+                                    <td><?php  echo $r->subject_code; ?></td> 
+                                    <td><?php  echo $r->subject_type; ?></td> 
  
                                     <td>
-                                      <a href="#" class="btn btn-xs btn-info view" id="<?php  echo $r->section_id; ?>"> view</a>
-                                       <a href="#" class="btn btn-xs btn-primary edit" id="<?php  echo $r->section_id; ?>"> Edit</a>
-                                      <a href="#" class="btn btn-xs btn btn-danger delete" id="<?php  echo $r->section_id; ?>">Delete</a>
+                                      <a href="#" class="btn btn-xs btn-info view" id="<?php  echo $r->subject_id; ?>"> view</a>
+                                       <a href="#" class="btn btn-xs btn-primary edit" id="<?php  echo $r->subject_id; ?>"> Edit</a>
+                                      <a href="#" class="btn btn-xs btn btn-danger delete" id="<?php  echo $r->subject_id; ?>">Delete</a>
                                     
                                     </td>
                                 </tr>
@@ -155,15 +153,15 @@ $(document).on('click', '.view', function(){
   //alert(id);
   var options = {
    ajaxPrefix: '',
-   ajaxData: {id_class:id},
+   ajaxData: {subject_id:id},
    ajaxComplete:function(){
     this.buttons([{
      type: Dialogify.BUTTON_PRIMARY
     }]);
    }
   };
-  new Dialogify('classes/stu_class/class_check.php', options)
-   .title('View Class Details')
+  new Dialogify('classes/stu_subject/stu_subject_check.php', options)
+   .title('View Subject Details')
    .showModal();
  });
 
@@ -196,9 +194,9 @@ $(document).on('click', '.edit',function() {
         Dialogify.confirm("<h3 class='text-danger'><b>Are you sure you want to remove this data?</b></h3>", {
                 ok:function(){
                         $.ajax({
-                        url:"classes/stu_class/class_check.php",
+                        url:"classes/stu_subject/stu_subject_check.php",
                         method:"POST",
-                        data:{class_id:id},
+                        data:{subject_id:id},
                         success:function(data)   {
                             Dialogify.alert('<h3 class="text-success text-center"><b>Data has been deleted</b></h3>');
                          //   DataTable.ajax.reload();
@@ -209,7 +207,7 @@ $(document).on('click', '.edit',function() {
                                 }, 1000)
                             }
                          })
-                     },
+                     }ড,
              cancel:function(){
              this.close();
         }

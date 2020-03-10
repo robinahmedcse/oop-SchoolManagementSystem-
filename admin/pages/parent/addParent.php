@@ -117,7 +117,7 @@ function parentValidateForm(formData) {
                          </div>
                     </div>
  
-                </div>
+             
                     
 
 
@@ -258,8 +258,7 @@ function parentValidateForm(formData) {
 
 
 
-                        <div class="ln_solid"></div>
-
+                     
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"> 
                                 <input type="submit" name='Submit' value="Submit" id="add-tc-info" class="btn btn-success">

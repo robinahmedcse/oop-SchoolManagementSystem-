@@ -161,7 +161,7 @@ ob_start();
                   elseif ($pages == "add-group") {
                     include './pages/group/addStuGroup.php ';
                   }
-                  /************\\ Section end //********************/ 
+                  /************\\ Group end //********************/ 
 
 
                     
@@ -184,6 +184,14 @@ ob_start();
                     }
                     /************\\ Subject end //********************/ 
 
+                         /************\\ STUDENT start //********************/ 
+                         elseif ($pages == "view-all-student") {
+                          include './pages/student/viewStudent.php ';
+                        }
+                        elseif ($pages == "add-student") {
+                          include './pages/student/addStudent.php ';
+                        }
+                        /************\\ Subject end //********************/ 
                
 
 
